@@ -1,7 +1,8 @@
 % Using SVD method to compress images
 % Load the Lenna image and turn rgb image into gray image.
 clc;clear; 
-lenna = imread('lenna_original_1972.jpg');
+%lenna = imread('lenna_original_1972.jpg');
+lenna = imread('lenna.png');
 lenna = rgb2gray(lenna);
 
 figure(1); clf;
@@ -16,9 +17,9 @@ singularValue = diag(S);
 Rate = cumsum(singularValue)/sum(singularValue);
 subplot(1,3,2)
 
-Pos = 200;
+Pos = 512 ;
 
-plot(Rate,'r.');hold on;
+plot(Rate,'r.');hold on;grid on;
 line([Pos Pos], [0 Rate(Pos)], 'linewidth',2,'Marker','o');
 %line([180,0],[180,Rate(180)],'r', 'Marker', 'o'); hold off;
 txt1 = strcat('\leftarrow   ',num2str(Rate(Pos)));
